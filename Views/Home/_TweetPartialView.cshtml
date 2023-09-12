@@ -1,0 +1,21 @@
+﻿@using Humanizer;
+@model Tweet
+<div class="tweet">
+    <img class="tweet__author-logo" src="@Model.User.ProfileImage" />
+    <div class="tweet__main">
+        <div class="tweet__header">
+            <div class="tweet__author-name">
+                @Model.User.UserName
+            </div>
+            <div class="tweet__author-slug">
+                Slug
+            </div>
+            <div class="tweet__publish-time">
+                @Model.Timestamp.Humanize()
+            </div>
+        </div>
+        <div class="tweet__content">
+            @Model.Content
+        </div>
+    </div>
+</div>

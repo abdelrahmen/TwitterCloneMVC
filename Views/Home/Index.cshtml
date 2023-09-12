@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "_TwitterLayout";
+    ViewData["Title"] = "Home Page";
+}
+@model List<Tweet>
+<br />
+<partial name="_PostTweetPartialView" />
+<br />
+@foreach(var tweet in Model)
+{
+<partial name="_TweetPartialView" model="tweet"/>
+}
+@section RightSideBar {
+    <partial name="_SideBarPartialView" />
+}
+

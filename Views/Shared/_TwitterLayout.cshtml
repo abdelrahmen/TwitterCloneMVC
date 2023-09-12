@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TwitterClone</title>
+    <link rel="stylesheet" href="~/css/Customed/global.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Customed/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Customed/brand.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Customed/sidebar-menu.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Customed/tweet.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Customed/trends-for-you.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Customed/who-to-follow.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TwitterClone.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/aLittleBitOfTwitter.styles.css" asp-append-version="true" />
+    <style>
+        button {
+            border: none;
+            background: none;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            font: inherit;
+        }
+        .menu{
+            display: none;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <div class="layout__left-sidebar">
+            <img src="./svg/twitter.svg" class="brand" />
+            <div class="sidebar-menu">
+                <div class="sidebar-menu__item sidebar-menu__item--active">
+                    <img src="./svg/home.svg" class="sidebar-menu__item-icon" />
+                    Home
+                </div>
+                <div class="sidebar-menu__item">
+                    <img src="./svg/explore.svg" class="sidebar-menu__item-icon" />
+                    Explore
+                </div>
+
+                <div class="sidebar-menu__item">
+                    <img src="./svg/notifications.svg"
+                         class="sidebar-menu__item-icon" />
+                    Notifications
+                </div>
+
+                <div class="sidebar-menu__item">
+                    <img src="./svg/messages.svg" class="sidebar-menu__item-icon" />
+                    Messages
+                </div>
+
+                <div class="sidebar-menu__item">
+                    <img src="./svg/profile.svg" class="sidebar-menu__item-icon" />
+                    Profile
+                </div>
+
+                <div class="sidebar-menu__item">
+                    <button id="toggleButton">
+                        <img src="./svg/more.svg" class="sidebar-menu__item-icon" />
+                        More
+                    </button>
+                </div>
+                <ul class="menu">
+                    <li><a href="Account/Logout" class="btn">Logout</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="layout__main">
+            @RenderBody()
+        </div>
+        @await RenderSectionAsync("RightSideBar", required: false)
+    </div>
+    <script>
+        const toggleButton = document.getElementById("toggleButton");
+        const menu = document.querySelector(".menu");
+
+        toggleButton.addEventListener("click", () => {
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        });
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
